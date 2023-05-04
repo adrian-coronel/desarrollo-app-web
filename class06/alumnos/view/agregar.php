@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,23 +15,14 @@
 
   <div class="container">
     <div class="row mt-5">
-      <form action="create.php">
-        <div class="form-group">
-          <label for="names">Nombre:</label>
-          <input class="form-control" type="text" name="names" required>
-        </div>
+      <form action="../controller/create.php" method="POST">
+        
+        <?php include("_form.php"); ?>
+        <input type="submit" 
+        class="btn btn-primary" 
+        name="enviar" 
+        value="Agregar">
 
-        <div class="form-group">
-          <label for="apellidoPaterno">Apellido Paterno:</label>
-          <input class="form-control" type="text" required name="apellidoPaterno">
-        </div>
-
-        <div class="form-group">
-          <label for="apellidoMaterno">Apellido Materno:</label>
-          <input class="form-control" type="text" name="apellidoMaterno">
-        </div>
-
-        <button class="btn btn-primary" type="submit">Guardar</button>
       </form>
     </div>
   </div>

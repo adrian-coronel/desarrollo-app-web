@@ -1,14 +1,14 @@
 <?php
 
-  include('../connection.php');
+  include('../../connection.php');
 
   $connection = connect();
 
   $sql = 'SELECT id_alumno,nombres,apellido_paterno,apellido_materno FROM alumno';
-
   $resultado = mysqli_query($connection, $sql);
 
-  disconnect($connection)
+  disconnect($connection);
+  $count = 0;
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
   <div class="container">
     <div class="row mt-5">
       <h1>Alumnos</h1>
-      <a href="./agregar.html">Nuevo alumno</a>
+      <a href="agregar.php">Nuevo alumno</a>
 
       <table class="table">
         <thead>
@@ -41,17 +41,17 @@
           </tr>
         </thead>
         <tbody>
+          
+          <!-- devuelve todas las filas en un array asociativo, numérico, o en ambos. -->
           <?php while($alumno = mysqli_fetch_array($resultado)): ?>
             <tr>
-              <th scope="row"><?= $alumno['id_alumno'] ?></th>
+              <th scope="row"><?= $count += 1 ?></th>
               <td><?= $alumno['nombres'] ?></td>
               <td><?= $alumno['apellido_paterno'] ?></td>
               <td><?= $alumno['apellido_materno'] ?></td>
               <td>
-                <div class="row">
-                  <a href="#" class="btn btn-primary">Editar</a>
-                  <a href="#" class="btn btn-danger">Eliminar</a>
-                </div>
+                <a href="./modificar.php?id=<?= $alumno['id_alumno'] ?>" class="btn btn-primary">Editar</a>
+                <a href="../controller/delete.php?id=<?= $alumno['id_alumno'] ?>" class="btn btn-danger">Eliminar</a>
               </td>
             </tr>
           <?php endwhile; ?>

@@ -1,20 +1,23 @@
 <?php
 
-  include("../connection.php");
+include('../../connection.php');
 
   $connection = connect();
 
   #Obtenemos los valores del formulario
-  $nombres = $_POST['names'];
-  $apellidoPaterno = $_POST['apellidoPaterno'];
-  $apellidoMaterno = $_POST['apellidoMaterno'];
-
-  $sql = "INSERT INTO ALUMNO(NOMBRES,APELLIDO_PATERNO,APELLIDO_MATERNO) VALUES ('$nombres','$apellidoPaterno','$apellidoMaterno')";
-
-  $resultado = mysqli_query($connection, $sql);
+  if(isset($_POST['enviar'])){
+    $nombres = $_POST['names'];
+    $apellidoPaterno = $_POST['apellidoPaterno'];
+    $apellidoMaterno = $_POST['apellidoMaterno'];
+  
+    $sql = "INSERT INTO ALUMNO(NOMBRES,APELLIDO_PATERNO,APELLIDO_MATERNO) VALUES ('$nombres','$apellidoPaterno','$apellidoMaterno')";
+  
+    
+    $resultado = mysqli_query($connection, $sql);
+  }
 
   disconnect($connection);
-
+  
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +46,7 @@
       }
       
       ?>
+      <a href="../view/alumno.php">Regresar</a>
     </div>
   </div>
 
