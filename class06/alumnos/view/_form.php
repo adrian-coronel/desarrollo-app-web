@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group mb-3">
   <label for="names">Nombre:</label>
   <input class="form-control" 
     type="text" name="names" 
@@ -7,7 +7,7 @@
   >
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
   <label for="apellidoPaterno">Apellido Paterno:</label>
   <input class="form-control" 
     type="text" 
@@ -17,7 +17,7 @@
   >
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
   <label for="apellidoMaterno">Apellido Materno:</label>
   <input class="form-control" 
     type="text" 

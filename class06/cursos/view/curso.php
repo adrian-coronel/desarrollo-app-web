@@ -4,9 +4,10 @@
 
   $connection = connect();
 
-  $sql = 'SELECT id_alumno,nombres,apellido_paterno,apellido_materno FROM alumno';
+  $sql = 'SELECT ID_CURSO,NOMBRE, CREDITOS FROM CURSO;';
   $resultado = mysqli_query($connection, $sql);
 
+  // print_r(mysqli_fetch_array($resultado));
   disconnect($connection);
   // $count = 0;
 ?>
@@ -22,36 +23,34 @@
 
   <!-- Fonts Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Alumnos</title>
+  <title>Cursos</title>
 </head>
 <body>
   <div class="container">
     <div class="row mt-5">
-      <h1>Alumnos</h1>
-      <a href="agregar.php" class="">Nuevo alumno</a>
+      <h1>Cursos</h1>
+      <a href="agregar.php" class="">Nuevo curso</a>
 
       <table class="table mt-4">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellido Paterno</th>
-            <th scope="col">Apellido Materno</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Creditos</th>
             <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           
           <!-- devuelve todas las filas en un array asociativo, numérico, o en ambos. -->
-          <?php $count = 0; while($alumno = mysqli_fetch_array($resultado)): ?>
+          <?php $count = 0; while($curso = mysqli_fetch_array($resultado)): ?>
             <tr>
               <th scope="row"><?= $count += 1 ?></th>
-              <td><?= $alumno['nombres'] ?></td>
-              <td><?= $alumno['apellido_paterno'] ?></td>
-              <td><?= $alumno['apellido_materno'] ?></td>
+              <td><?= $curso['NOMBRE'] ?></td>
+              <td><?= $curso['CREDITOS'] ?></td>
               <td>
-                <a href="./modificar.php?id=<?= $alumno['id_alumno'] ?>" class="btn btn-primary">Editar</a>
-                <a href="../controller/delete.php?id=<?= $alumno['id_alumno'] ?>" class="btn btn-danger">Eliminar</a>
+                <a href="./modificar.php?id=<?= $curso['ID_CURSO'] ?>" class="btn btn-primary">Editar</a>
+                <a href="../controller/delete.php?id=<?= $curso['ID_CURSO'] ?>" class="btn btn-danger">Eliminar</a>
               </td>
             </tr>
           <?php endwhile; ?>

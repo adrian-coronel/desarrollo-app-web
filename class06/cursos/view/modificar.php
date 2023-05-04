@@ -3,13 +3,12 @@
   include('../../connection.php');
   $connection = connect();
   if ($_GET['id']){
-    $sql = "SELECT id_alumno,nombres,apellido_paterno,apellido_materno FROM alumno WHERE id_alumno =  ". $_GET['id'];
+    $sql = "SELECT ID_CURSO,NOMBRE, CREDITOS FROM CURSO WHERE ID_CURSO= ". $_GET['id'];
     $resultado = mysqli_query($connection, $sql);
 
     while ($row = mysqli_fetch_array($resultado)){
-      $nombres = $row['nombres'];
-      $apellidoPaterno = $row['apellido_paterno'];
-      $apellidoMaterno = $row['apellido_materno'];
+      $nombre = $row['NOMBRE'];
+      $creditos = $row['CREDITOS'];
     }
 
   }
@@ -29,7 +28,7 @@
 
   <!-- Fonts Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Modificar Alumno</title>
+  <title>Modificar Curso</title>
 </head>
 <body>
 
@@ -37,7 +36,7 @@
     <div class="row mt-5">
       <form class="bg-light px-5 py-4 rounded shadow-sm" action="../controller/update.php" method="POST">
         <div class="form-header mb-4">
-          <h4 class="display-4">Editar Alumno</h4>
+          <h4 class="display-4">Editar Curso</h4>
           <hr>
         </div>
         <?php include("_form.php") ?>

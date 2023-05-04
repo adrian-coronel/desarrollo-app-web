@@ -1,3 +1,24 @@
+<?php
+
+include('../../connection.php');
+
+  $connection = connect();
+
+  #Obtenemos los valores del formulario
+  if(isset($_POST['enviar'])){
+    $nombre = $_POST['name'];
+    $credito = $_POST['credito'];
+  
+    $sql = "INSERT INTO CURSO(NOMBRE, CREDITOS) VALUES ('$nombre',$credito);";
+  
+    
+    $resultado = mysqli_query($connection, $sql);
+  }
+
+  disconnect($connection);
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +30,22 @@
 
   <!-- Fonts Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Laboratorio 06</title>
+  <title>Nuevo curso</title>
 </head>
 <body>
   
   <div class="container">
     <div class="row mt-5">
-      <h1>C R U D</h1>
-      <li><a href="alumnos/view/alumno.php">Alumnos</a></li>
-      <li><a href="cursos/view/curso.php">Cursos</a></li>
-      <li><a href="matriculas/matricula.php">Matricula</a></li>
+      <h1>Nuevo alumno</h1>
+      <?php 
+      if(!$resultado){
+        echo 'No se pudo guardar el alumno';
+      } else{
+        echo 'Alumno guardado correctamente';
+      }
+      
+      ?>
+      <a href="../view/curso.php">Regresar</a>
     </div>
   </div>
 

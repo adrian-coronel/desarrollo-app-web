@@ -9,7 +9,7 @@
 
   <!-- Fonts Google -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Nuevo Alumno</title>
+  <title>Nuevo curso</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     <div class="row mt-5">
       <form class="bg-light px-5 py-4 rounded shadow-sm" action="../controller/create.php" method="POST">
         <div class="form-header mb-4">
-          <h4 class="display-4">Nuevo Alumno</h4>
+          <h4 class="display-4">Nuevo Curso</h4>
           <hr>
         </div>
         <?php include("_form.php"); ?>
